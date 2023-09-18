@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare && simple-git-hooks",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@toryz/eslint-config": "^0.1.4",
+    "eslint": "^8.49.0",
+    "lint-staged": "^14.0.1",
+    "nuxt": "^3.7.3",
+    "simple-git-hooks": "^2.9.0"
+  }
+}
