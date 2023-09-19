@@ -13,8 +13,10 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
+    "@iconify/utils": "^2.1.10",
     "@nuxt/devtools": "latest",
     "@toryz/eslint-config": "^0.1.4",
+    "@unocss/nuxt": "^0.55.7",
     "eslint": "^8.49.0",
     "lint-staged": "^14.0.1",
     "nuxt": "^3.7.3",
