@@ -1,9 +1,6 @@
 export default defineAppConfig({
-  title: 'Hello Nuxt',
+  title: '100 Tools',
   theme: {
     dark: true
-    // colors: {
-    //   primary: '#ff0000'
-    // }
   }
 })

@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@unocss/nuxt'
@@ -8,5 +7,13 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false
+  },
+  app: {
+    head: {
+      title: '100 tools',
+      meta: [
+        { name: 'description', content: 'toryz\'s 100 tools or toys.' }
+      ]
+    }
   }
 })
