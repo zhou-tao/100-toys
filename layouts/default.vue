@@ -1,8 +1,10 @@
 <script setup lang="ts">
   const route = useRoute()
+  const title = computed(() => route.meta.title)
+  const name = computed(() => route.meta.name)
   useHead({
-    title: `100 tools${route.meta.title ? ` - ${route.meta.title}` : ''}`,
-    meta: [{ property: 'description', content: `100 tools for ${route.meta.title}` }]
+    title: `100 tools${title.value ? ` - ${title.value}.${name.value}` : ''}`,
+    meta: [{ property: 'description', content: `${name.value}` }]
   })
 </script>
 

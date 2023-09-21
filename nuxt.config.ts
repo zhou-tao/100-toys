@@ -15,5 +15,8 @@ export default defineNuxtConfig({
         { name: 'description', content: 'toryz\'s 100 tools or toys.' }
       ]
     }
-  }
+  },
+  css: [
+    '@/assets/styles/public.css'
+  ]
 })

@@ -1,13 +1,13 @@
 <script setup lang="ts">
   definePageMeta({
-    name: 'ViewTransition',
-    title: '001'
+    name: 'Particle',
+    title: '002'
   })
 </script>
 
 <template>
   <div>
-    <h1>001</h1>
+    <h1>002</h1>
   </div>
 </template>
 
