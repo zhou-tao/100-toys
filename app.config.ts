@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  title: '100 Tools',
+  title: '100 Toys',
   theme: {
     dark: true
   }

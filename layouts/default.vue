@@ -3,7 +3,7 @@
   const title = computed(() => route.meta.title)
   const name = computed(() => route.meta.name)
   useHead({
-    title: `100 tools${title.value ? ` - ${title.value}.${name.value}` : ''}`,
+    title: `100 toys${title.value ? ` - ${title.value}.${name.value}` : ''}`,
     meta: [{ property: 'description', content: `${name.value}` }]
   })
 </script>
