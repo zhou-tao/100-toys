@@ -21,11 +21,15 @@
       </nav>
       <footer mt-24>
         <a class="link" href="https://github.com/zhou-tao/100-toys">
-          <div i-ri-github-line />github
+          <div i-ri-github-line />Github
         </a>
         &bull;
-        <a class="link" href="https://toryz-me.netlify.app/">
-          <div i-ri-article-line />me
+        <a class="link" href="https://toryz-me.netlify.app">
+          <div i-ri-article-line /> me
+        </a>
+        &bull;
+        <a class="link" href="https://afdian.net/a/toryz">
+          <div i-carbon-lightning />爱发电
         </a>
         <p class="link cursor-default">
           Copyright &copy; 2023-present toryz
@@ -36,11 +40,11 @@
 </template>
 
 <style scoped lang="css">
-.link {
-  @apply text-#9CA3AF no-underline op60 hover:op100 transition-opacity duration-300 ease-in-out cursor-pointer;
-}
-
 .link b {
   color: #374151;
+}
+
+footer {
+  color: #a1a1aa;
 }
 </style>

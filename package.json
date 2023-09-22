@@ -13,6 +13,7 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
+    "@iconify-json/carbon": "^1.1.21",
     "@iconify-json/ri": "^1.1.12",
     "@nuxt/devtools": "latest",
     "@toryz/eslint-config": "^0.1.4",

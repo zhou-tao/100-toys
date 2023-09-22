@@ -3,3 +3,7 @@ html, body {
   padding: 0;
   font-family: Fira Code,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
 }
+
+.link {
+  @apply text-#9CA3AF no-underline op60 hover:op100 transition-opacity duration-300 ease-in-out cursor-pointer;
+}
