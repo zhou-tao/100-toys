@@ -10,7 +10,7 @@
 
 <template>
   <div class="home" h-screen flex="~ col" justify-center>
-    <div w-full max-w-760px m-auto px10 py15 overflow-y-auto>
+    <div w-full max-w-760px m-auto px10 py15 pt5 overflow-y-auto>
       <h1 font-mono text-xl font-bold m0 mb8>
         <div i-ri-trophy-line mt="-3px" /> 100 Toys
       </h1>
@@ -41,7 +41,7 @@
 
 <style scoped lang="css">
 .link b {
-  color: #374151;
+  @apply text-#374151 dark:text-#a1a1aa;
 }
 
 footer {
