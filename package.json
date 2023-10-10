@@ -7,10 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare && simple-git-hooks",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "postinstall": "nuxt prepare && simple-git-hooks"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.21",
@@ -23,5 +23,12 @@
     "lint-staged": "^14.0.1",
     "nuxt": "^3.7.3",
     "simple-git-hooks": "^2.9.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
