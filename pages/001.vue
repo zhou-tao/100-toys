@@ -121,15 +121,15 @@ html.dark {
   z-index: 1;
 }
 
-/* star mask */
-.star::view-transition-new(root) {
+/* dots mask */
+.dots::view-transition-new(root) {
   -webkit-mask: radial-gradient(#fff calc(1% * var(--seed)), transparent calc(1% * var(--seed)));
   mask: radial-gradient(#fff calc(1% * var(--seed)), transparent calc(1% * var(--seed)));
   -webkit-mask-size: 80px 80px;
   mask-size: 80px 80px;
 }
 
-.star.dark::view-transition-old(root) {
+.dots.dark::view-transition-old(root) {
    -webkit-mask: radial-gradient(transparent calc(1% * var(--seed)), #000 calc(1% * var(--seed)));
    mask: radial-gradient(transparent calc(1% * var(--seed)), #000 calc(1% * var(--seed)));
    -webkit-mask-size: 80px 80px;
