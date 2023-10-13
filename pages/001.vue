@@ -1,21 +1,39 @@
 <script setup lang="ts">
   definePageMeta({
-    name: 'ViewTransition',
+    name: 'Transition',
     title: '001',
     time: '2023/09/22'
   })
 
   const isDark = ref(false)
 
+  const extraClass = ref('')
+
+  const transitionTypes = ref(['circle', 'sector', 'dots', 'shutters'])
+
   onMounted(() => {
     isDark.value = document.documentElement.classList.contains('dark')
   })
 
   watch(isDark, (v) => {
-    document.documentElement.setAttribute('class', v ? 'dark' : '')
+    document.documentElement.setAttribute('class', `${v ? 'dark' : ''} ${extraClass.value}`)
   })
 
-  function triggerDark(e: MouseEvent) {
+  const clipPaths: any = {
+    circle: [
+      'circle(0px)',
+      'circle(80%)'
+    ],
+    sector: [
+      'polygon(50% 50%, 50% 0%, 0% 0%,  0% 0%, 100% 0%, 100% 0%, 50% 0%)',
+      'polygon(50% 50%, 0% 0%, 0% 0%, 0% 0%, 100% 0%, 100% 0%, 100% 0%)',
+      'polygon(50% 50%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 100% 100%)',
+      'polygon(50% 50%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%)'
+    ],
+    seed: Array(100).fill(0).map((_, i) => ({ '--seed': i }))
+  }
+
+  function triggerDark(type: string) {
     // @ts-expect-error experimental API
     const isAppearanceTransition = document.startViewTransition
       && !window.matchMedia('(prefers-reduced-motion: reduce)').matches // startViewTransition api不支持 或 系统开启动画减弱
@@ -26,12 +44,7 @@
       setDarkValue()
       return
     }
-    const x = e.clientX
-    const y = e.clientY
-    const endRadius = Math.hypot(
-      Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y)
-    )
+    extraClass.value = clipPaths[type] ? '' : type
     // @ts-expect-error experimental API
     const transition = document.startViewTransition(async () => {
       setDarkValue()
@@ -39,16 +52,15 @@
     })
     transition.ready
       .then(() => {
-        const clipPath = [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`
-        ]
+        const clipPath = clipPaths[type] || clipPaths.seed
         document.documentElement.animate(
-          {
-            clipPath: isDark.value
-              ? [...clipPath].reverse()
-              : clipPath
-          },
+          clipPaths[type]
+            ? {
+              clipPath: isDark.value
+                ? [...clipPath].reverse()
+                : clipPath
+            }
+            : clipPath,
           {
             duration: 400,
             easing: 'ease-out',
@@ -63,11 +75,23 @@
 
 <template>
   <h1>001</h1>
-  <div flex="~ col" items-center>
-    <div :class="isDark ? 'i-ri-moon-line' : 'i-ri-sun-line'" text-2xl cursor-pointer @click="triggerDark" />
-    <span mt4>{{ isDark ? 'dark' : 'light' }}</span>
+  <div class="mt-30% main">
+    <div v-for="type in transitionTypes" :key="type" class="flex flex-col items-center  justify-center cursor-pointer b-(1px solid #a1a1aa) rounded" @click="triggerDark(type)">
+      <div :class="isDark ? 'i-ri-moon-line' : 'i-ri-sun-line'" text-2xl cursor-pointer />
+      <span mt2>{{ type }}</span>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.main {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 5.5rem);
+  grid-template-rows: repeat(2, 5.5rem);
+  grid-gap: 2rem;
+}
+</style>
 
 <style>
 html {
@@ -95,5 +119,35 @@ html.dark {
 }
 .dark::view-transition-new(root) {
   z-index: 1;
+}
+
+/* star mask */
+.star::view-transition-new(root) {
+  -webkit-mask: radial-gradient(#fff calc(1% * var(--seed)), transparent calc(1% * var(--seed)));
+  mask: radial-gradient(#fff calc(1% * var(--seed)), transparent calc(1% * var(--seed)));
+  -webkit-mask-size: 80px 80px;
+  mask-size: 80px 80px;
+}
+
+.star.dark::view-transition-old(root) {
+   -webkit-mask: radial-gradient(transparent calc(1% * var(--seed)), #000 calc(1% * var(--seed)));
+   mask: radial-gradient(transparent calc(1% * var(--seed)), #000 calc(1% * var(--seed)));
+   -webkit-mask-size: 80px 80px;
+   mask-size: 80px 80px;
+}
+
+/* shutters mask */
+.shutters::view-transition-new(root) {
+  -webkit-mask: linear-gradient(to right, #fff calc(1% * var(--seed)), transparent calc(1% * var(--seed)));
+  mask: linear-gradient(to right, #fff calc(1% * var(--seed)), transparent calc(1% * var(--seed)));
+  -webkit-mask-size: 80px;
+  mask-size: 80px;
+}
+
+.shutters.dark::view-transition-old(root) {
+  -webkit-mask: linear-gradient(to right, transparent calc(1% * var(--seed)), #000 calc(1% * var(--seed)));
+  mask: linear-gradient(to right, transparent calc(1% * var(--seed)), #000 calc(1% * var(--seed)));
+  -webkit-mask-size: 80px;
+  mask-size: 80px;
 }
 </style>

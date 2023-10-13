@@ -10,14 +10,8 @@
 <template>
   <div relative h-screen px8 py15 box-border>
     <div i-ri-arrow-left-s-line w6 h6 class="link" @click="router.go(-1)" />
-    <div class="toy">
+    <div class="toy" w-full max-w-760px my-8 mx-auto relative>
       <slot />
     </div>
   </div>
 </template>
-
-<style scoped lang="css">
-.toy {
-  @apply w-full max-w-760px my-8 mx-auto;
-}
-</style>
