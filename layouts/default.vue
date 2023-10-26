@@ -13,5 +13,6 @@
     <div class="toy" w-full max-w-760px my-8 mx-auto relative>
       <slot />
     </div>
+    <ToolMenu />
   </div>
 </template>
