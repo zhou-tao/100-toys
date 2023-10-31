@@ -9,7 +9,13 @@
 
   const extraClass = ref('')
 
-  const transitionTypes = ref(['circle', 'sector', 'dots', 'shutters'])
+  const transitionTypes = ['circle', 'sector', 'dots', 'shutters']
+  const icons = [
+    ['i-ri-album-line', 'i-ri-album-fill'],
+    ['i-ri-signal-wifi-line', 'i-ri-signal-wifi-fill'],
+    ['i-ri-bubble-chart-line', 'i-ri-bubble-chart-fill'],
+    ['i-ri-map-2-line', 'i-ri-map-2-fill']
+  ]
 
   onMounted(() => {
     isDark.value = document.documentElement.classList.contains('dark')
@@ -76,8 +82,8 @@
 <template>
   <h1>001</h1>
   <div class="mt-30% main">
-    <div v-for="type in transitionTypes" :key="type" class="flex flex-col items-center  justify-center cursor-pointer b-(1px solid #a1a1aa) rounded" @click="triggerDark(type)">
-      <div :class="isDark ? 'i-ri-moon-line' : 'i-ri-sun-line'" text-2xl cursor-pointer />
+    <div v-for="type, index in transitionTypes" :key="type" class="flex flex-col items-center  justify-center cursor-pointer b-(1px solid #a1a1aa) rounded" @click="triggerDark(type)">
+      <div :class="icons[index][isDark ? 1 : 0]" text-2xl cursor-pointer />
       <span mt2>{{ type }}</span>
     </div>
   </div>
