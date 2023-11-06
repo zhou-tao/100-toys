@@ -80,7 +80,6 @@
 </script>
 
 <template>
-  <h1>001</h1>
   <div class="mt-30% main">
     <div v-for="type, index in transitionTypes" :key="type" class="flex flex-col items-center  justify-center cursor-pointer b-(1px solid #a1a1aa) rounded" @click="triggerDark(type)">
       <div :class="icons[index][isDark ? 1 : 0]" text-2xl cursor-pointer />

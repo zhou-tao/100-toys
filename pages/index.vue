@@ -20,19 +20,19 @@
         </NuxtLink>
       </nav>
       <footer mt-24>
-        <a class="link" href="https://github.com/zhou-tao/100-toys">
-          <div i-ri-github-line />Github
+        <a class="link" href="https://toryz-me.netlify.app">
+          <div i-ri-article-line />@toryz
         </a>
         &bull;
-        <a class="link" href="https://toryz-me.netlify.app">
-          <div i-ri-article-line /> me
+        <a class="link" href="https://github.com/zhou-tao/100-toys">
+          <div i-ri-github-line />github
         </a>
         &bull;
         <a class="link" href="https://afdian.net/a/toryz">
           <div i-carbon-lightning />爱发电
         </a>
         <p class="link cursor-default">
-          Copyright &copy; 2023-present toryz
+          copyright &copy; 2023-present toryz
         </p>
       </footer>
     </div>
