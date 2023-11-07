@@ -5,6 +5,8 @@
     time: '2023/09/22'
   })
 
+  const isSupported = ref(true)
+
   const isDark = ref(false)
 
   const extraClass = ref('')
@@ -48,6 +50,7 @@
     }
     if (!isAppearanceTransition) {
       setDarkValue()
+      isSupported.value = false
       return
     }
     extraClass.value = clipPaths[type] ? '' : type
@@ -86,15 +89,23 @@
       <span mt2>{{ type }}</span>
     </div>
   </div>
+  <Alert v-if="!isSupported" title="当前浏览器不支持！" type="error" />
 </template>
 
 <style scoped>
 .main {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 5.5rem);
-  grid-template-rows: repeat(2, 5.5rem);
+  grid-template-columns: repeat(4, 5.5rem);
+  grid-template-rows: repeat(1, 5.5rem);
   grid-gap: 2rem;
+}
+
+@media (max-width: 639.9px) {
+  .main {
+    grid-template-columns: repeat(2, 5.5rem);
+    grid-template-rows: repeat(2, 5.5rem);
+  }
 }
 </style>
 
