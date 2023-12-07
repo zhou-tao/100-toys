@@ -1,7 +1,13 @@
 import { defineConfig, presetUno, presetAttributify, presetIcons, transformerVariantGroup, transformerDirectives } from 'unocss'
 
 export default defineConfig({
-  theme: {},
+  theme: {
+    colors: {
+      light: 'rgba(156, 163, 175, 0.6)',
+      base: 'rgba(156, 163, 175, 0.8)',
+      heavy: 'rgb(156, 163, 175)'
+    }
+  },
   shortcuts: {},
   rules: [],
   presets: [

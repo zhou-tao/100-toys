@@ -5,5 +5,5 @@ html, body {
 }
 
 .link {
-  @apply text-#9CA3AF no-underline op60 hover:op100 transition-opacity duration-300 ease-in-out cursor-pointer;
+  @apply text-base no-underline op60 hover:op100 transition-opacity duration-300 ease-in-out cursor-pointer;
 }
