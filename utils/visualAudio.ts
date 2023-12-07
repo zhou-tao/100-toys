@@ -19,8 +19,9 @@ export default class VisualAudio {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
       const source = audioCtx.createMediaElementSource(this.audio)
       this.analyser = audioCtx.createAnalyser()
-      source.connect(this.analyser)
+      this.analyser.fftSize = 512
       this.analyser.connect(audioCtx.destination)
+      source.connect(this.analyser)
     }
     this.draw()
   }
