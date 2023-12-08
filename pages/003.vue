@@ -41,8 +41,8 @@
 
 <template>
   <audio ref="audio" loop src="/mp3/The Climb - Miley Cyrus.mp3" />
-  <div class="container" w="800px <sm:full" h="600px" relative bg-white dark:bg-black>
-    <canvas ref="canvas" />
+  <div class="container" w="600px" relative bg-white dark:bg-black>
+    <canvas ref="canvas" width="600" height="600" />
     <div class="player animate-spin" :style="{ 'animation-play-state': playing ? 'running' : 'paused' }" w120px h120px absolute z2 rounded-full border="24 #27272A solid" op60 cursor-pointer @click="toggleAudio">
       <img src="~/assets/images/poster.png" alt="The Climb" height="120" rounded-full ml-35px>
     </div>
@@ -51,19 +51,18 @@
 </template>
 
 <style scoped>
-canvas {
-  width: 100%;
-  height: 100%;
+.container {
+  margin: 0 auto;
 }
 
 .player {
-  top: calc(20% - 84px);
+  top: calc(50% - 84px);
   left: calc(50% - 84px);
   animation-duration: 8s;
 }
 
 .icon {
-  top: calc(20% - 30px);
+  top: calc(50% - 30px);
   left: calc(50% - 30px);
 }
 </style>
