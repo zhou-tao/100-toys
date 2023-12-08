@@ -15,11 +15,11 @@
 </script>
 
 <template>
-  <ul class="toolbar" border="1 light solid">
+  <ul class="toolbar" border="1 base solid">
     <li class="menu-item" :class="{ disabled: currentPageNo === 1 }" @click="goPage(-1)">
       <div i-ri-arrow-left-double-fill />
     </li>
-    <li class="menu-item info" b-l="1 light solid" b-r="1 light solid">
+    <li class="menu-item info" b-l="1 base solid" b-r="1 base solid">
       {{ $route.meta.title }}
     </li>
     <li class="menu-item" :class="{ disabled: currentPageNo >= pageCount }" @click="goPage(1)">
@@ -34,7 +34,7 @@
 }
 
 .menu-item {
-  @apply h-28px leading-relaxed px2 py1 text-light;
+  @apply h-28px leading-relaxed px2 py1 text-base;
 }
 
 .menu-item:not(.disabled) {
@@ -46,6 +46,6 @@
 }
 
 .menu-item.disabled {
-  @apply cursor-not-allowed;
+  @apply cursor-not-allowed text-light;
 }
 </style>

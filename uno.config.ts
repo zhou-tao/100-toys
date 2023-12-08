@@ -3,7 +3,7 @@ import { defineConfig, presetUno, presetAttributify, presetIcons, transformerVar
 export default defineConfig({
   theme: {
     colors: {
-      light: 'rgba(156, 163, 175, 0.6)',
+      light: 'rgba(156, 163, 175, 0.4)',
       base: 'rgba(156, 163, 175, 0.8)',
       heavy: 'rgb(156, 163, 175)'
     }
@@ -26,5 +26,9 @@ export default defineConfig({
   transformers: [
     transformerVariantGroup(),
     transformerDirectives()
+  ],
+  safelist: [
+    'i-ri-sun-line',
+    'i-ri-moon-line'
   ]
 })

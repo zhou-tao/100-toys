@@ -6,10 +6,24 @@
   definePageMeta({
     layout: false
   })
+
+  const themeIcon = ref<'sun' | 'moon'>('sun')
+  let toggleDarkFunc: any
+
+  onBeforeMount(async () => {
+    const { isDark, toggleDark } = await import('../composables/useDark')
+    toggleDarkFunc = toggleDark
+    watch(isDark, (v) => {
+      themeIcon.value = v ? 'sun' : 'moon'
+    })
+  })
 </script>
 
 <template>
   <div class="home" h-screen flex="~ col" justify-center>
+    <a class="theme-toggle" @click="toggleDarkFunc">
+      <div :class="`i-ri-${themeIcon}-line`" />
+    </a>
     <div w-full max-w-760px m-auto px10 py15 pt5 overflow-y-auto>
       <h1 font-mono text-xl font-bold m0 mb8>
         <div i-ri-trophy-line mt="-3px" /> 100 Toys
@@ -42,6 +56,10 @@
 <style scoped lang="css">
 .link b {
   @apply text-#374151 dark:text-#a1a1aa;
+}
+
+.theme-toggle {
+  @apply absolute text-lg top-12 <sm:top-8 right-16 <sm:right-12 cursor-pointer op-60 hover:op-100 transition-200 ease;
 }
 
 footer {
