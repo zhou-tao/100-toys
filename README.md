@@ -1,10 +1,7 @@
 # 100 toys
 
-
 ### Introduction
-
-[Some toys](https://toryz-100.netlify.app/) are implemented in JavaScript when inspiration strikes. 
-
+Zero dependency, [some toys](https://toryz-100.netlify.app) implemented using javascript.
 
 ### Now
 
