@@ -54,7 +54,6 @@
       return
     }
     extraClass.value = clipPaths[type] ? '' : type
-    // @ts-expect-error experimental API
     const transition = document.startViewTransition(async () => {
       setDarkValue()
       await nextTick()

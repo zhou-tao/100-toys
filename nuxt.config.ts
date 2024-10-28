@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: '100 toys',
+      title: '100 toys - toryz',
       meta: [
         { name: 'description', content: 'toryz\'s 100 toys.' }
       ]
