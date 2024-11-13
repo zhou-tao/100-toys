@@ -19,7 +19,7 @@
     <li class="menu-item" :class="{ disabled: currentPageNo === 1 }" @click="goPage(-1)">
       <div i-ri-arrow-left-double-fill />
     </li>
-    <li class="menu-item info" b-l="1 base solid" b-r="1 base solid">
+    <li class="menu-item info" b-l="1 base solid" b-r="1 base solid" :title="$route.meta.name">
       {{ $route.meta.title }}
     </li>
     <li class="menu-item" :class="{ disabled: currentPageNo >= pageCount }" @click="goPage(1)">
