@@ -1,6 +1,6 @@
 <script setup lang="ts">
   definePageMeta({
-    name: 'Virtual List',
+    name: 'Scroll List',
     title: '006',
     time: '2026/07/26'
   })
@@ -122,7 +122,6 @@
 <template>
   <div>
     <div ref="viewport" class="viewport" @scroll.passive="onScroll">
-      <div class="scenery" />
       <div class="content" :style="{ height: `${totalHeight}px` }">
         <div
           v-for="i in visibleIndices"
@@ -187,7 +186,13 @@
   overflow-x: hidden;
   border: 1px solid var(--vp-border);
   border-radius: 12px;
-  background: var(--vp-bg);
+  /* 彩色背景直接设在 viewport 上，为毛玻璃 backdrop-filter 提供可模糊的内容。
+   * background-attachment: local 让背景随滚动固定在视口可见区（而非随内容滚动）。 */
+  background:
+    radial-gradient(40% 50% at 18% 18%, var(--scn-1), transparent 70%),
+    radial-gradient(45% 55% at 82% 32%, var(--scn-2), transparent 70%),
+    radial-gradient(50% 60% at 50% 88%, var(--scn-3), transparent 70%),
+    linear-gradient(180deg, var(--scn-from), var(--scn-to));
 }
 
 /* 深色主题：html.dark 下覆盖变量，精确跟随应用主题（非 prefers-color-scheme） */
@@ -211,31 +216,6 @@
   --chip-text: #d4d4d8;
   --sb-thumb: rgba(255, 255, 255, 0.15);
   --sb-thumb-hover: rgba(255, 255, 255, 0.25);
-}
-
-/* 彩色背景：为毛玻璃 backdrop-filter 提供可模糊的内容。
- * 用 sticky + height:0 + overflow:visible：sticky 粘在视口顶部随滚动固定，
- * height:0 不占文档流空间（避免把 .content 挤出视口），子背景用绝对定位撑满可见区。 */
-.scenery {
-  position: sticky;
-  top: 0;
-  height: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.scenery::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 500px;
-  background:
-    radial-gradient(40% 50% at 18% 18%, var(--scn-1), transparent 70%),
-    radial-gradient(45% 55% at 82% 32%, var(--scn-2), transparent 70%),
-    radial-gradient(50% 60% at 50% 88%, var(--scn-3), transparent 70%),
-    linear-gradient(180deg, var(--scn-from), var(--scn-to));
 }
 
 .content {
