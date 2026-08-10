@@ -51,7 +51,15 @@ export function toggleDark(e: MouseEvent) {
 }
 
 watch(isDark, (v) => {
+  if (typeof document === 'undefined') return
   document.documentElement.setAttribute('class', v ? Theme.DARK : '')
 }, {
   immediate: true
 })
+
+// SSG 输出的 HTML 里 html 没有 dark class（SSR 时 localStorage/document 不可用）。
+// 客户端启动后从 localStorage 读取真实主题并同步到 html，确保深色模式正确应用。
+if (typeof window !== 'undefined') {
+  const stored = getStorage(Storage.THEME)
+  isDark.value = stored === Theme.DARK
+}
