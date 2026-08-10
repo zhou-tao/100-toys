@@ -90,7 +90,7 @@
     <div v-for="({ id, value, ...style }) in bars" :key="id" class="num-bar" :style="style" :class="{ active: actives && actives.includes(value) }">
       {{ value }}
     </div>
-    <div class="toolbar">
+    <div class="sort-toolbar">
       <input
         v-for="(num, index) in nums"
         :key="index"
@@ -123,7 +123,7 @@
     }
   }
 
-  .toolbar {
+  .sort-toolbar {
     @apply absolute right-0 top-0 z2 b b-light b-solid;
 
     input {
