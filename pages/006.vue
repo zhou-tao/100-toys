@@ -195,27 +195,27 @@
     linear-gradient(180deg, var(--scn-from), var(--scn-to));
 }
 
-/* 深色主题：html.dark 下覆盖变量，精确跟随应用主题（非 prefers-color-scheme） */
+/* 深色主题：html.dark 下覆盖变量，整体暗色系 -- 低饱和渐变 + 深灰卡片 */
 :global(html.dark) .viewport {
   --vp-bg: #0c0e14;
-  --vp-border: rgba(156, 163, 175, 0.3);
-  --scn-1: rgba(99, 102, 241, 0.55);
-  --scn-2: rgba(236, 72, 153, 0.45);
-  --scn-3: rgba(34, 211, 238, 0.4);
-  --scn-from: #1a1c25;
-  --scn-to: #0a0c12;
-  --item-border: rgba(255, 255, 255, 0.12);
-  --item-bg: rgba(255, 255, 255, 0.08);
-  --item-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
-  --c-name: #f4f4f5;
+  --vp-border: rgba(156, 163, 175, 0.2);
+  --scn-1: rgba(99, 102, 241, 0.18);
+  --scn-2: rgba(236, 72, 153, 0.14);
+  --scn-3: rgba(34, 211, 238, 0.12);
+  --scn-from: #181a22;
+  --scn-to: #08090d;
+  --item-border: rgba(255, 255, 255, 0.08);
+  --item-bg: rgba(30, 32, 40, 0.72);
+  --item-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  --c-name: #e4e4e7;
   --c-role: #a1a1aa;
-  --c-motto: #8b8b96;
+  --c-motto: #71717a;
   --c-index: #52525b;
-  --chip-bg: rgba(0, 0, 0, 0.35);
-  --chip-border: rgba(255, 255, 255, 0.1);
+  --chip-bg: rgba(0, 0, 0, 0.5);
+  --chip-border: rgba(255, 255, 255, 0.08);
   --chip-text: #d4d4d8;
-  --sb-thumb: rgba(255, 255, 255, 0.15);
-  --sb-thumb-hover: rgba(255, 255, 255, 0.25);
+  --sb-thumb: rgba(255, 255, 255, 0.12);
+  --sb-thumb-hover: rgba(255, 255, 255, 0.2);
 }
 
 .content {
