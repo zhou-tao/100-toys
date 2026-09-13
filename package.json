@@ -12,11 +12,15 @@
     "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare && simple-git-hooks"
   },
+  "dependencies": {
+    "three": "^0.186.0"
+  },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.21",
     "@iconify-json/ri": "^1.1.12",
     "@nuxt/devtools": "0.8.4",
     "@toryz/eslint-config": "^0.1.4",
+    "@types/three": "^0.185.4",
     "@unocss/nuxt": "0.55.7",
     "d": "^1.0.1",
     "eslint": "^8.49.0",
