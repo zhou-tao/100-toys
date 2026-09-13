@@ -33,6 +33,10 @@
       })
       // 让配色状态与 viewer 的初始配色保持一致（否则默认高亮的色块与机身不符）
       viewer.value.setFinish(finish.value)
+      // 等首帧真正画出来再收起加载动效
+      await new Promise<void>((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
+      })
       ready.value = true
     }
     catch (e) {
@@ -76,6 +80,19 @@
           @click="pickFinish(f.key)"
         />
       </div>
+      <div v-if="!ready && !failure" class="loading">
+        <div class="spinner">
+          <i style="transform: rotate(0deg); animation-delay: 0.000s" />
+          <i style="transform: rotate(45deg); animation-delay: -0.125s" />
+          <i style="transform: rotate(90deg); animation-delay: -0.250s" />
+          <i style="transform: rotate(135deg); animation-delay: -0.375s" />
+          <i style="transform: rotate(180deg); animation-delay: -0.500s" />
+          <i style="transform: rotate(225deg); animation-delay: -0.625s" />
+          <i style="transform: rotate(270deg); animation-delay: -0.750s" />
+          <i style="transform: rotate(315deg); animation-delay: -0.875s" />
+        </div>
+        <span>正在加载模型…</span>
+      </div>
       <div v-if="failure" class="failure">
         3D 初始化失败：{{ failure }}
       </div>
@@ -105,6 +122,49 @@
   flex-direction: column;
   gap: 12px;
   padding-bottom: 92px;
+}
+
+/* iOS 风格加载动效：8 根渐隐辐条 */
+.loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(180deg, #fbfbfd, #f2f2f6);
+  transition: opacity 0.5s ease;
+}
+
+.loading span {
+  font-size: 13px;
+  color: #86868b;
+}
+
+.spinner {
+  position: relative;
+  width: 34px;
+  height: 34px;
+}
+
+.spinner i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 9px;
+  margin: -17px 0 0 -1.5px;
+  border-radius: 1.5px;
+  background: #86868b;
+  transform-origin: 50% 17px;
+  animation: ios-spin 1s linear infinite;
+}
+
+@keyframes ios-spin {
+  0% { opacity: 1; }
+  100% { opacity: 0.12; }
 }
 
 .stage {
